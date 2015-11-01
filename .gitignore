@@ -1,0 +1,7 @@
+# Sublime
+*.sublime-workspace
+
+# Grunt
+node_modules
+bower_components
+www/**/*
