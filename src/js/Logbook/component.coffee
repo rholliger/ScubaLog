@@ -1,6 +1,5 @@
 Logbook = React.createClass(
-	render: ->
-		<h1>Hello Logbook!</h1>
+	render: require "./template.rt"
 )
 
 module.exports = Logbook

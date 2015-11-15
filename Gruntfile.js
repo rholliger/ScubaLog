@@ -6,15 +6,30 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
 
+        sass: {
+            options: {
+                outputStyle: "compressed"
+            },
+            dist: {
+                files: {
+                    "www/css/main.css": "src/styles/main.sass"
+                }
+            }
+        },
         concat: {
             packages: {
                 src: [
                     packageDirectory+"/jquery/dist/jquery.js",
-                    packageDirectory+"/react/react.js",
+                    packageDirectory+"/lodash/lodash.js",
+                    packageDirectory+"/react/react-with-addons.js",
                     packageDirectory+"/react/react-dom.js",
                     packageDirectory+"/firebase/firebase.js"
                 ],
                 dest: "www/js/packages.js"
+            },
+            css: {
+                src: [ "src/vendor/css/*.css" ],
+                dest: "www/css/packages.css"
             }
         },
         uglify: {
@@ -24,26 +39,23 @@ module.exports = function(grunt) {
                 }
             }
         },
-        browserify: {
-            options: {
-                browserifyOptions: {
-                    transform: ["coffee-reactify", "uglifyify"],
-                    extensions: [".coffee"]
-                }
-            },
-            dev: {
-                src: ["src/js/*.coffee"],
-                dest: "www/js/app.js"
+        cssmin: {
+            target: {
+                src: "www/css/packages.css",
+                dest: "www/css/packages.css"
             }
         },
-        sass: {
-            options: {
-                outputStyle: "compressed"
-            },
-            dist: {
-                files: {
-                    "www/css/main.css": "src/styles/main.sass"
-                }
+        browserify: {
+            coffee: {
+                options: {
+                    browserifyOptions: {
+                        transform: ["coffee-reactify", "react-templatify", "uglifyify"],
+                        extensions: [".coffee"],
+                        debug: true
+                    }
+                },
+                src: ["src/js/*.coffee"],
+                dest: "www/js/app.js"
             }
         },
         connect: {
@@ -61,8 +73,8 @@ module.exports = function(grunt) {
                 spawn: false
             },
             scripts: {
-                files: "src/js/*.coffee",
-                tasks: ["browserify"]
+                files: ["src/js/**/*.coffee", "src/js/**/*.rt"],
+                tasks: ["browserify:coffee"]
             },
             styles: {
                 files: "src/styles/*.sass",
@@ -77,8 +89,10 @@ module.exports = function(grunt) {
     grunt.registerTask("default", [
         "concat:packages",
         "uglify:packages",
-        "browserify",
         "sass",
+        "concat:css",
+        "cssmin",
+        "browserify:coffee",
         "connect:server",
         "watch"
     ]);
