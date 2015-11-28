@@ -1,0 +1,39 @@
+html
+	#app
+		#logbookList
+			.top
+				text-align: center
+				margin: 30px 0
+
+				h1
+					font-size: 40px
+					margin: 30px 0
+
+				a
+					background-color: #F2F2F2
+					padding: 20px 10px
+					display: block
+					border: 2px solid #bbb
+
+			table
+				width: 100%
+
+				tr
+					border-bottom: 2px solid #bbb
+
+					td, th
+						padding: 20px
+
+				thead
+					tr
+						th
+							text-align: left
+							font-weight: bold
+
+				tbody
+					tr
+						&:nth-child(odd)
+							background-color: #F2F2F2
+
+						&:nth-child(even)
+							background-color: #fff

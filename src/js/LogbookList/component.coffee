@@ -7,7 +7,11 @@ LogbookList = React.createClass(
 			}
 			{
 				index: 2
-				value: "Zweiter Eintrag"
+				value: "Erster Eintrag"
+			}
+			{
+				index: 3
+				value: "Erster Eintrag"
 			}
 		]
 

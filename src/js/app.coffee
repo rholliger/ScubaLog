@@ -1,6 +1,6 @@
-Logbook = require "./Logbook/component"
+Router = require "./Router/component"
 
 ReactDOM.render(
-	<Logbook />,
+	<Router />,
 	document.getElementById "app"
 )

@@ -1,24 +1,25 @@
 <rt-require dependency="../LogbookList/component" as="LogbookList"/>
+<rt-require dependency="../Header/component" as="Header"/>
 
-<div id="viewport">
-	<header>
-		<div id="logo">
-			<a href="#">Logo</a>
-		</div>
-	</header>
-	<section id="logbook" class="container_12">
-		<div class="grid_12">
+<div>
+	<Header />
+	<section id="logbookList" class="grid-container">
+		<div class="grid-20 prefix-40 suffix-40">
 			<div class="top">
 				<h1>Scubalog</h1>
-				<a href="javascript:void(0)" class="new">New Log</a>
+				<a href="log" class="new">New Log</a>
 			</div>
+		</div>
 
-			<!-- Dashboard -->
+		<div class="grid-100">
+			<!-- Dashboard
 
 			<!-- -->
 
 			<!-- LogbookList -->
-			<LogbookList />
+			<div class="logbookList">
+				<LogbookList />
+			</div>
 			<!-- -->
 		</div>
 	</section>

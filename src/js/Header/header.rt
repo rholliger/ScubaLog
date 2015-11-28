@@ -1,0 +1,6 @@
+<header>
+	<a rt-if="this.props.hasBackButton" href="javascript:void(0);" class="backBtn" onClick="()=>this.back()">Back </a>
+	<div id="logo">
+		<a href="/">Logo</a>
+	</div>
+</header>
