@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "browserify": {
     "transform": [
-        "browserify-global-shim"
+      "browserify-global-shim"
     ]
   },
   "browserify-global-shim": {
-      "lodash": "_",
-      "react/addons": "React"
+    "lodash": "_",
+    "react/addons": "React"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -16,7 +16,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-uglify": "latest",
-    "grunt-contrib-cssmin":"latest",
+    "grunt-contrib-cssmin": "latest",
     "grunt-sass": "latest",
     "load-grunt-tasks": "latest",
     "grunt-browserify": "latest",
@@ -25,6 +25,7 @@
     "coffee-reactify": "latest",
     "react-templatify": "latest",
     "debowerify": "latest",
-    "browserify-global-shim": "^1.0.0"
+    "browserify-global-shim": "^1.0.0",
+    "connect-modrewrite": "^0.8.2",
   }
 }

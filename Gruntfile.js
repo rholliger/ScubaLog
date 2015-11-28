@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
+    var rewrite = require( "connect-modrewrite" );
 
     var packageDirectory = "bower_components"
 
@@ -23,7 +24,7 @@ module.exports = function(grunt) {
                     packageDirectory+"/lodash/lodash.js",
                     packageDirectory+"/react/react-with-addons.js",
                     packageDirectory+"/react/react-dom.js",
-                    packageDirectory+"/firebase/firebase.js"
+                    packageDirectory+"/page/page.js"
                 ],
                 dest: "www/js/packages.js"
             },
@@ -50,7 +51,7 @@ module.exports = function(grunt) {
                 options: {
                     browserifyOptions: {
                         transform: ["coffee-reactify", "react-templatify", "uglifyify"],
-                        extensions: [".coffee"],
+                        extensions: [".coffee", ".rt"],
                         debug: true
                     }
                 },
@@ -59,6 +60,12 @@ module.exports = function(grunt) {
             }
         },
         connect: {
+            options: {  
+                middleware: function ( connect, options, middlewares ) {
+                    middlewares.unshift(rewrite(["!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|\\.png|\\.gif$ /index.html"]));
+                    return middlewares;
+                }
+            },
             server: {
                 options: {
                     port: 9001,
