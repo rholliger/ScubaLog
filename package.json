@@ -26,6 +26,6 @@
     "react-templatify": "latest",
     "debowerify": "latest",
     "browserify-global-shim": "^1.0.0",
-    "connect-modrewrite": "^0.8.2",
+    "connect-modrewrite": "^0.8.2"
   }
 }
